@@ -33,7 +33,7 @@
         return true;
     })->values();
 
-    $baseUrl = url('/teachers');
+    $baseUrl = route('teachers.index', absolute: false);
 @endphp
 <!DOCTYPE html>
 <html lang="en">
