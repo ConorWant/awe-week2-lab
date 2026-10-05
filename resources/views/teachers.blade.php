@@ -1,56 +1,6 @@
 @php
-    // ---------------------------------------------------------------
-    // Data (hard-coded sample teachers). No controller needed.
-    // ---------------------------------------------------------------
-    $all = collect([
-        [
-            'id' => 1, 'name' => 'Sarah Whitfield', 'subject' => 'Mathematics',
-            'department' => 'STEM', 'email' => 's.whitfield@example-school.org',
-            'room' => 'M12', 'years' => 12, 'qualification' => 'MSc Mathematics, PGCE',
-            'bio' => 'Head of Mathematics. Runs the after-school maths club and coaches the UKMT team.',
-        ],
-        [
-            'id' => 2, 'name' => 'David Okafor', 'subject' => 'Physics',
-            'department' => 'STEM', 'email' => 'd.okafor@example-school.org',
-            'room' => 'S3', 'years' => 8, 'qualification' => 'BSc Physics, PGCE',
-            'bio' => 'Enjoys practical demonstrations and leads the school astronomy society.',
-        ],
-        [
-            'id' => 3, 'name' => 'Emily Hartley', 'subject' => 'English Literature',
-            'department' => 'Humanities', 'email' => 'e.hartley@example-school.org',
-            'room' => 'E4', 'years' => 15, 'qualification' => 'MA English Literature, PGCE',
-            'bio' => 'Head of English. Organises the annual creative writing competition.',
-        ],
-        [
-            'id' => 4, 'name' => 'Marcus Reid', 'subject' => 'History',
-            'department' => 'Humanities', 'email' => 'm.reid@example-school.org',
-            'room' => 'H2', 'years' => 5, 'qualification' => 'BA History, PGCE',
-            'bio' => 'Specialises in 20th century history and runs the Year 9 museum trip.',
-        ],
-        [
-            'id' => 5, 'name' => 'Priya Nair', 'subject' => 'Computer Science',
-            'department' => 'STEM', 'email' => 'p.nair@example-school.org',
-            'room' => 'IT1', 'years' => 6, 'qualification' => 'BSc Computer Science, PGCE',
-            'bio' => 'Teaches GCSE and A-level Computer Science and runs the coding club.',
-        ],
-        [
-            'id' => 6, 'name' => 'Tom Gallagher', 'subject' => 'Physical Education',
-            'department' => 'Sport & Arts', 'email' => 't.gallagher@example-school.org',
-            'room' => 'Sports Hall', 'years' => 10, 'qualification' => 'BSc Sport Science, PGCE',
-            'bio' => 'Head of PE. Coaches the school football and cross-country teams.',
-        ],
-        [
-            'id' => 7, 'name' => 'Isabelle Moreau', 'subject' => 'French & Art',
-            'department' => 'Sport & Arts', 'email' => 'i.moreau@example-school.org',
-            'room' => 'A1', 'years' => 7, 'qualification' => 'BA Modern Languages, PGCE',
-            'bio' => 'Teaches French and runs the Art Club. Organises the annual Paris exchange.',
-        ],
-    ])->map(function ($t) {
-        // Initials for the avatar circle, e.g. "Sarah Whitfield" -> "SW"
-        $parts = preg_split('/\s+/', trim($t['name']));
-        $t['initials'] = mb_strtoupper(mb_substr($parts[0], 0, 1) . mb_substr(end($parts), 0, 1));
-        return $t;
-    });
+    
+    $all = \App\Models\Teacher::orderBy('name')->get();
 
     $departments = $all->pluck('department')->unique()->sort()->values();
 
@@ -95,7 +45,7 @@
         :root {
             --bg: #f5f6fa;
             --card: #ffffff;
-            --text: #1f2430;
+            --text: #080400;
             --muted: #6b7280;
             --accent: #2f5bea;
             --border: #e2e5ee;
