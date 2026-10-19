@@ -1,6 +1,6 @@
 @php
     
-    $all = \App\Models\Teacher::orderBy('name')->get();
+    $all = $teachers;
 
     $departments = $all->pluck('department')->unique()->sort()->values();
 
@@ -42,6 +42,10 @@
 </header>
 
 <main class="mx-auto max-w-5xl px-4 py-8 sm:px-6">
+    @if (session('status'))
+        <p class="mb-6 rounded border border-green-300 bg-green-50 p-3 text-green-900">{{ session('status') }}</p>
+    @endif
+
 @if ($detail)
 
     <p class="mb-6">
@@ -64,9 +68,15 @@
         </dl>
 
         <p class="mt-6 leading-relaxed text-slate-700">{{ $detail['bio'] }}</p>
+        <a class="mt-6 inline-block font-semibold text-green-800 underline" href="{{ route('teachers.edit', $detail) }}">Edit teacher</a>
     </section>
 
 @else
+
+    <p class="mb-6">
+        <a class="inline-block rounded-lg bg-green-800 px-4 py-2 font-semibold text-white no-underline hover:bg-green-900"
+           href="{{ route('teachers.create') }}">Add a teacher</a>
+    </p>
 
     <form class="mb-6 flex flex-wrap items-center gap-3" method="get" action="{{ $baseUrl }}">
         <input class="min-w-56 flex-1 rounded-lg border border-green-300 bg-white px-3 py-2 text-slate-900 placeholder:text-slate-500 focus:border-green-700 focus:outline-none focus:ring-2 focus:ring-green-200"
