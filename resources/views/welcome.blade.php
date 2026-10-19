@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome | Our School</title>
-    @vite('resources/css/app.css')
-</head>
-<body class="min-h-screen bg-green-100 font-sans leading-relaxed text-slate-800">
+<x-background-layout title="Welcome | Our School">
 
 {{--
     Links use named routes. The names must exist in routes/web.php:
@@ -15,17 +7,6 @@
     absolute: false makes route() return a relative path such as /teachers,
     which stays on whatever host the browser is already using.
 --}}
-
-<nav>
-    <div class="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 border-b border-green-200 bg-white px-4 py-4 sm:px-6">
-        <a class="text-lg font-bold text-slate-800 no-underline" href="{{ route('welcome', absolute: false) }}">Our School</a>
-        <div class="flex flex-wrap gap-5 font-medium">
-            <a class="text-green-800 no-underline hover:text-green-950" href="{{ route('welcome', absolute: false) }}">Home</a>
-            <a class="text-green-800 no-underline hover:text-green-950" href="{{ route('teachers.index', absolute: false) }}">Teachers</a>
-            <a class="text-green-800 no-underline hover:text-green-950" href="{{ route('people.index', absolute: false) }}">People</a>
-        </div>
-    </div>
-</nav>
 
 <section class="bg-green-800 px-4 py-16 text-center text-white sm:py-20">
     <h1 class="text-4xl font-bold tracking-tight sm:text-5xl">Welcome to Our School</h1>
@@ -55,9 +36,4 @@
     </div>
 </main>
 
-<footer class="px-4 pb-10 pt-6 text-center text-sm text-slate-600">
-    &copy; {{ date('Y') }} Our School. All rights reserved.
-</footer>
-
-</body>
-</html>
+</x-background-layout>

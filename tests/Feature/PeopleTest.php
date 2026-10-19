@@ -16,6 +16,19 @@ class PeopleTest extends TestCase
         $this->get(route('people.create'))->assertOk();
     }
 
+    public function test_welcome_and_teachers_pages_use_the_shared_layout(): void
+    {
+        $this->get(route('welcome'))
+            ->assertOk()
+            ->assertSee('Our School')
+            ->assertSee('bg-orange-100');
+
+        $this->get(route('teachers.index'))
+            ->assertOk()
+            ->assertSee('Our School')
+            ->assertSee('bg-orange-100');
+    }
+
     public function test_a_person_can_be_added_and_viewed(): void
     {
         $response = $this->post(route('people.store'), [

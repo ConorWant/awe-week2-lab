@@ -35,19 +35,10 @@
 
     $baseUrl = route('teachers.index', absolute: false);
 @endphp
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Our Teachers</title>
-    @vite('resources/css/app.css')
-</head>
-<body class="min-h-screen bg-green-100 font-sans text-slate-900">
+<x-background-layout title="Our Teachers">
 <header class="bg-green-800 px-4 py-8 text-center text-white">
     <h1 class="text-3xl font-bold">Our Teachers</h1>
     <p class="mt-1 text-green-50">Meet the staff who make our school great</p>
-    <p class="mt-3"><a class="font-medium text-white underline hover:text-green-100" href="{{ route('people.index') }}">People directory</a></p>
 </header>
 
 <main class="mx-auto max-w-5xl px-4 py-8 sm:px-6">
@@ -117,5 +108,4 @@
 
 @endif
 </main>
-</body>
-</html>
+</x-background-layout>
