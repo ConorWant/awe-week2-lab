@@ -26,7 +26,7 @@
         <div class="rounded-xl border border-green-200 bg-white p-6 shadow-sm">
             <h3 class="mb-2 text-xl font-semibold">Departments</h3>
             <p class="mb-4 text-slate-600">From STEM to Humanities and Sport &amp; Arts, filter staff by department.</p>
-            <a class="font-semibold text-green-800 no-underline hover:text-green-950" href="{{ route('teachers.index', absolute: false) }}">Browse departments &rarr;</a>
+            <a class="font-semibold text-green-800 no-underline hover:text-green-950" href="{{ route('departments.index', absolute: false) }}">Browse departments &rarr;</a>
         </div>
         <div class="rounded-xl border border-green-200 bg-white p-6 shadow-sm">
             <h3 class="mb-2 text-xl font-semibold">Get in touch</h3>

@@ -13,9 +13,9 @@
         <div class="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 px-4 py-4 sm:px-6">
             <a class="text-lg font-bold text-slate-800 no-underline" href="{{ route('welcome') }}">Our School</a>
             <div class="flex flex-wrap gap-5 font-medium">
-                <a class="text-orange-900 no-underline hover:text-orange-950" href="{{ route('welcome') }}">Home</a>
-                <a class="text-orange-900 no-underline hover:text-orange-950" href="{{ route('teachers.index') }}">Teachers</a>
-                <a class="text-orange-900 no-underline hover:text-orange-950" href="{{ route('people.index') }}">People</a>
+                <a class="text-blue-900 no-underline hover:text-yellow-400" href="{{ route('welcome') }}">Home</a>
+                <a class="text-blue-900 no-underline hover:text-yellow-400" href="{{ route('teachers.index') }}">Teachers</a>
+                <a class="text-blue-900 no-underline hover:text-yellow-400" href="{{ route('departments.index') }}">Departments</a>
             </div>
         </div>
     </nav>

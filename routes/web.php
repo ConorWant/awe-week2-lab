@@ -13,6 +13,10 @@ Route::get('/teachers', function (Request $request) {
     return view('teachers');
 })->name('teachers.index');
 
+Route::get('/departments', function (Request $request) {
+    return view('departments');
+})->name('departments.index');
+
 Route::resource('people', PersonController::class)->only([
     'index',
     'create',
