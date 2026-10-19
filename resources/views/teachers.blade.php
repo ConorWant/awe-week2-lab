@@ -42,147 +42,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Our Teachers</title>
     @vite('resources/css/app.css')
-    <style>
-        :root {
-            --bg: #f5f6fa;
-            --card: #ffffff;
-            --text: #080400;
-            --muted: #6b7280;
-            --accent: #2f5bea;
-            --border: #e2e5ee;
-        }
-        * { box-sizing: border-box; }
-        body {
-            margin: 0;
-            font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-            color: var(--text);
-            line-height: 1.5;
-        }
-        header {
-            background: var(--accent);
-            color: #fff;
-            padding: 2rem 1rem;
-            text-align: center;
-        }
-        header h1 { margin: 0 0 .25rem; }
-        header p  { margin: 0; opacity: .85; }
-        main { max-width: 1000px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
-
-        form.filters {
-            display: flex; flex-wrap: wrap; gap: .75rem;
-            margin-bottom: 1.5rem;
-        }
-        form.filters input, form.filters select, form.filters button, .btn {
-            padding: .6rem .8rem;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            font: inherit;
-            background: #fff;
-        }
-        form.filters input { flex: 1 1 220px; }
-        form.filters button, .btn {
-            background: var(--accent); color: #fff; border-color: var(--accent);
-            cursor: pointer; text-decoration: none; display: inline-block;
-        }
-        .btn.secondary { background: #fff; color: var(--accent); }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1rem;
-        }
-        .card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1.25rem;
-            display: flex; flex-direction: column; gap: .5rem;
-        }
-        .avatar {
-            width: 56px; height: 56px; border-radius: 50%;
-            background: var(--accent); color: #fff;
-            display: flex; align-items: center; justify-content: center;
-            font-weight: 700; font-size: 1.1rem;
-        }
-        .card h2 { margin: .25rem 0 0; font-size: 1.15rem; }
-        .tag {
-            display: inline-block; font-size: .75rem;
-            background: #eaf0ff; color: var(--accent);
-            padding: .15rem .6rem; border-radius: 999px; width: fit-content;
-        }
-        .muted { color: var(--muted); font-size: .9rem; }
-        .card a.more { margin-top: auto; color: var(--accent); font-weight: 600; text-decoration: none; }
-
-        .detail {
-            background: var(--card); border: 1px solid var(--border);
-            border-radius: 12px; padding: 2rem;
-        }
-        .detail .avatar { width: 80px; height: 80px; font-size: 1.6rem; margin-bottom: 1rem; }
-        .detail dl { display: grid; grid-template-columns: max-content 1fr; gap: .5rem 1.5rem; margin: 1.5rem 0; }
-        .detail dt { font-weight: 600; color: var(--muted); }
-        .detail dd { margin: 0; }
-        .empty { text-align: center; color: var(--muted); padding: 3rem 0; }
-    </style>
 </head>
-<body class="bg-green-100">
-<header>
-    <h1>Our Teachers</h1>
-    <p>Meet the staff who make our school great</p>
-    <p><a class="text-white underline" href="{{ route('people.index') }}">People directory</a></p>
+<body class="min-h-screen bg-green-100 font-sans text-slate-900">
+<header class="bg-green-800 px-4 py-8 text-center text-white">
+    <h1 class="text-3xl font-bold">Our Teachers</h1>
+    <p class="mt-1 text-green-50">Meet the staff who make our school great</p>
+    <p class="mt-3"><a class="font-medium text-white underline hover:text-green-100" href="{{ route('people.index') }}">People directory</a></p>
 </header>
 
-<main>
+<main class="mx-auto max-w-5xl px-4 py-8 sm:px-6">
 @if ($detail)
 
-    <p><a class="btn secondary" href="{{ $baseUrl }}">&larr; Back to all teachers</a></p>
+    <p class="mb-6">
+        <a class="inline-block rounded-lg border border-green-800 bg-white px-4 py-2 font-semibold text-green-900 no-underline hover:bg-green-50"
+           href="{{ $baseUrl }}">&larr; Back to all teachers</a>
+    </p>
 
-    <section class="detail">
-        <div class="avatar">{{ $detail['initials'] }}</div>
-        <h2>{{ $detail['name'] }}</h2>
-        <span class="tag">{{ $detail['department'] }}</span>
+    <section class="rounded-xl border border-green-200 bg-white p-6 shadow-sm sm:p-8">
+        <div class="mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-green-800 text-2xl font-bold text-white">{{ $detail['initials'] }}</div>
+        <h2 class="text-2xl font-bold">{{ $detail['name'] }}</h2>
+        <span class="mt-2 inline-block w-fit rounded-full bg-green-100 px-3 py-1 text-sm font-medium text-green-900">{{ $detail['department'] }}</span>
 
-        <dl>
-            <dt>Subject</dt>        <dd>{{ $detail['subject'] }}</dd>
-            <dt>Qualification</dt>  <dd>{{ $detail['qualification'] }}</dd>
-            <dt>Experience</dt>     <dd>{{ $detail['years'] }} years</dd>
-            <dt>Room</dt>           <dd>{{ $detail['room'] }}</dd>
-            <dt>Email</dt>
-            <dd><a href="mailto:{{ $detail['email'] }}">{{ $detail['email'] }}</a></dd>
+        <dl class="mt-6 grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-[max-content_1fr]">
+            <dt class="font-semibold text-slate-600">Subject</dt>        <dd>{{ $detail['subject'] }}</dd>
+            <dt class="font-semibold text-slate-600">Qualification</dt>  <dd>{{ $detail['qualification'] }}</dd>
+            <dt class="font-semibold text-slate-600">Experience</dt>     <dd>{{ $detail['years'] }} years</dd>
+            <dt class="font-semibold text-slate-600">Room</dt>           <dd>{{ $detail['room'] }}</dd>
+            <dt class="font-semibold text-slate-600">Email</dt>
+            <dd><a class="text-green-800 underline hover:text-green-950" href="mailto:{{ $detail['email'] }}">{{ $detail['email'] }}</a></dd>
         </dl>
 
-        <p>{{ $detail['bio'] }}</p>
+        <p class="mt-6 leading-relaxed text-slate-700">{{ $detail['bio'] }}</p>
     </section>
 
 @else
 
-    <form class="filters" method="get" action="{{ $baseUrl }}">
-        <input type="search" name="q" placeholder="Search by name or subject…" value="{{ $search }}">
-        <select name="dept">
+    <form class="mb-6 flex flex-wrap items-center gap-3" method="get" action="{{ $baseUrl }}">
+        <input class="min-w-56 flex-1 rounded-lg border border-green-300 bg-white px-3 py-2 text-slate-900 placeholder:text-slate-500 focus:border-green-700 focus:outline-none focus:ring-2 focus:ring-green-200"
+               type="search" name="q" placeholder="Search by name or subject…" value="{{ $search }}">
+        <select class="rounded-lg border border-green-300 bg-white px-3 py-2 text-slate-900 focus:border-green-700 focus:outline-none focus:ring-2 focus:ring-green-200"
+                name="dept">
             <option value="">All departments</option>
             @foreach ($departments as $d)
                 <option value="{{ $d }}" @selected($d === $dept)>{{ $d }}</option>
             @endforeach
         </select>
-        <button type="submit">Filter</button>
+        <button class="cursor-pointer rounded-lg bg-green-800 px-4 py-2 font-semibold text-white hover:bg-green-900"
+                type="submit">Filter</button>
         @if ($search !== '' || $dept !== '')
-            <a class="btn secondary" href="{{ $baseUrl }}">Clear</a>
+            <a class="rounded-lg border border-green-800 bg-white px-4 py-2 font-semibold text-green-900 no-underline hover:bg-green-50"
+               href="{{ $baseUrl }}">Clear</a>
         @endif
     </form>
 
-    <p class="muted">Showing {{ $teachers->count() }} of {{ $all->count() }} teachers</p>
+    <p class="mb-4 text-sm text-slate-600">Showing {{ $teachers->count() }} of {{ $all->count() }} teachers</p>
 
     @if ($teachers->isEmpty())
-        <div class="empty">No teachers match your search.</div>
+        <div class="rounded-xl border border-green-200 bg-white px-4 py-12 text-center text-slate-600">No teachers match your search.</div>
     @else
-        <div class="grid">
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             @foreach ($teachers as $t)
-                <article class="card">
-                    <div class="avatar">{{ $t['initials'] }}</div>
-                    <h2>{{ $t['name'] }}</h2>
-                    <span class="tag">{{ $t['department'] }}</span>
+                <article class="flex flex-col gap-2 rounded-xl border border-green-200 bg-white p-5 shadow-sm">
+                    <div class="flex h-14 w-14 items-center justify-center rounded-full bg-green-800 text-lg font-bold text-white">{{ $t['initials'] }}</div>
+                    <h2 class="mt-1 text-lg font-semibold">{{ $t['name'] }}</h2>
+                    <span class="inline-block w-fit rounded-full bg-green-100 px-3 py-1 text-xs font-medium text-green-900">{{ $t['department'] }}</span>
                     <div><strong>{{ $t['subject'] }}</strong></div>
-                    <div class="muted">Room {{ $t['room'] }} &middot; {{ $t['years'] }} yrs experience</div>
-                    <a class="more" href="{{ $baseUrl }}?id={{ $t['id'] }}">View profile &rarr;</a>
+                    <div class="text-sm text-slate-600">Room {{ $t['room'] }} &middot; {{ $t['years'] }} yrs experience</div>
+                    <a class="mt-auto pt-2 font-semibold text-green-800 no-underline hover:text-green-950"
+                       href="{{ $baseUrl }}?id={{ $t['id'] }}">View profile &rarr;</a>
                 </article>
             @endforeach
         </div>
