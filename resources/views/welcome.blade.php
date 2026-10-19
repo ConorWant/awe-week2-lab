@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Welcome | Our School</title>
+    @vite('resources/css/app.css')
     <style>
         :root {
             --bg: #f5f6fa;
@@ -18,7 +19,6 @@
         body {
             margin: 0;
             font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-            background: var(--bg);
             color: var(--text);
             line-height: 1.6;
         }
@@ -79,7 +79,7 @@
         }
     </style>
 </head>
-<body>
+<body class="bg-green-100">
 
 {{--
     Links use named routes. The names must exist in routes/web.php:
@@ -95,6 +95,7 @@
         <div class="links">
             <a href="{{ route('welcome', absolute: false) }}">Home</a>
             <a href="{{ route('teachers.index', absolute: false) }}">Teachers</a>
+            <a href="{{ route('people.index', absolute: false) }}">People</a>
         </div>
     </div>
 </nav>

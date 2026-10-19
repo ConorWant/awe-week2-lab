@@ -1,26 +1,21 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PersonController;
 use Illuminate\Http\Request;
-use App\Http\Controllers\ProductController;
+use Illuminate\Support\Facades\Route;
 
+Route::get('/', function (Request $request) {
 
-Route::get('/test', function() {
-    return "hello world";
-});
-
-Route::get('/', function(Request $request) {
-    
-    return view ('welcome');
+    return view('welcome');
 })->name('welcome');
-
-Route::get('/person/{id}', function(Request $request, int $id) {
-    return view('person', ['data'=>$request->all(), 'id'=>$id]);
-    });
 
 Route::get('/teachers', function (Request $request) {
     return view('teachers');
 })->name('teachers.index');
 
-Route::get('/product', [ProductController::class, 'index']);
-Route::get('/product/{id}', [ProductController::class, 'show']);
+Route::resource('people', PersonController::class)->only([
+    'index',
+    'create',
+    'store',
+    'show',
+]);

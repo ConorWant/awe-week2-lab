@@ -1,25 +1,16 @@
-<!DOCTYPE html>
-<html lang='en'>
-    <head>
-        <meta charset="utf-8">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <script src="https://cdn.tailwindcss.com"></script>
+<x-background-layout title="{{ $person->name }}">
+    <a class="font-medium text-green-800 underline" href="{{ route('people.index') }}">All people</a>
 
-        <title>My test person page</title>
+    @if (session('status'))
+        <p class="mt-6 rounded border border-green-300 bg-green-50 p-3 text-green-900">{{ session('status') }}</p>
+    @endif
 
-    </head>
-    <body class="m-5">
-    <h1 class="text-xxl">Person ID {{$id}}</h1>
+    <section class="mt-6 rounded-xl border border-green-200 bg-white p-6 shadow-sm">
+        <p class="text-sm font-semibold uppercase tracking-wide text-green-800">Person #{{ $person->id }}</p>
+        <h1 class="mt-2 text-3xl font-bold">{{ $person->name }}</h1>
+        <p class="mt-2 text-lg text-slate-600">{{ $person->role }}</p>
+    </section>
 
-    <div class="w-full max-w-sm bg-slate-50 border border-2 border-gray-400 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-    <div class="flex flex-col items-center pt-10 pb-10">
-        <img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="/images/pi.webp" alt="Person Image"/>
-        <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">{{$data['name']??'UNKNOWN'}}</h5>
-        <span class="text-base text-gray-500 dark:text-gray-400">{{$data['role']??'UNKNOWN'}}</span>
-    </div>
-</div>
-
-</body>
-</html>
+    <a class="mt-6 inline-block rounded bg-green-700 px-4 py-2 font-semibold text-white hover:bg-green-800"
+       href="{{ route('people.create') }}">Add another person</a>
+</x-background-layout>

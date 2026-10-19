@@ -1,13 +1,16 @@
+@props(['title' => config('app.name', 'Laravel')])
+
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>{{ config('app.name', 'Laravel') }}</title>
-    </head>
-    <body style="background-color: #f0f0f0; font-family: Arial, sans-serif; margin: 5px; padding: 0;">
-      <h1>Working with Components</h1>  
-        
-      <p>Product</p>
-      {{ $slot }}
-
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ $title }}</title>
+    @vite('resources/css/app.css')
+</head>
+<body class="min-h-screen bg-green-100 font-sans text-slate-900">
+    <main class="mx-auto w-full max-w-4xl p-6">
+        {{ $slot }}
+    </main>
 </body>
 </html>

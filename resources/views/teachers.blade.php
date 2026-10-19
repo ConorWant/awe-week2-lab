@@ -41,6 +41,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Our Teachers</title>
+    @vite('resources/css/app.css')
     <style>
         :root {
             --bg: #f5f6fa;
@@ -54,7 +55,6 @@
         body {
             margin: 0;
             font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-            background: var(--bg);
             color: var(--text);
             line-height: 1.5;
         }
@@ -124,10 +124,11 @@
         .empty { text-align: center; color: var(--muted); padding: 3rem 0; }
     </style>
 </head>
-<body>
+<body class="bg-green-100">
 <header>
     <h1>Our Teachers</h1>
     <p>Meet the staff who make our school great</p>
+    <p><a class="text-white underline" href="{{ route('people.index') }}">People directory</a></p>
 </header>
 
 <main>
